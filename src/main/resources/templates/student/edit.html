@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑学生</title>
+    <style>
+        body {
+            text-align: center; /* 让所有内容居中 */
+            font-family: Arial, sans-serif; /* 设置字体 */
+        }
+        h1 {
+            color: #333; /* 设置标题颜色 */
+        }
+        form {
+            margin: 0 auto; /* 水平居中表单 */
+            max-width: 300px; /* 设置表单最大宽度 */
+            padding: 20px; /* 设置表单内边距 */
+            border: 1px solid #ccc; /* 添加边框 */
+            border-radius: 5px; /* 圆角边框 */
+            background-color: #f5f5f5; /* 背景颜色 */
+        }
+        label {
+            display: block; /* 换行显示标签 */
+            margin-bottom: 10px; /* 设置标签下边距 */
+        }
+        input[type="text"] {
+            width: 100%; /* 使文本框宽度填满表单 */
+            padding: 5px; /* 设置文本框内边距 */
+            margin-bottom: 10px; /* 设置文本框下边距 */
+        }
+        input[type="submit"] {
+            background-color: #007bff; /* 设置提交按钮背景颜色 */
+            color: #fff; /* 设置文字颜色 */
+            padding: 10px 20px; /* 设置内边距 */
+            border: none; /* 移除边框 */
+            border-radius: 5px; /* 圆角按钮 */
+            cursor: pointer; /* 鼠标样式 */
+        }
+        a {
+            display: block; /* 换行显示链接 */
+            margin-top: 20px; /* 设置链接上边距 */
+        }
+    </style>
+</head>
+<body>
+<h1>编辑学生</h1>
+<form th:action="@{/students/edit/{id}(id=${student.id})}" method="post" th:object="${student}">
+    <label>姓名: <input type="text" th:field="*{name}" /></label><br />
+    <label>年龄: <input type="text" th:field="*{age}" /></label><br />
+    <input type="submit" value="保存" />
+</form>
+<a th:href="@{/students/list}">返回列表</a>
+</body>
+</html>
